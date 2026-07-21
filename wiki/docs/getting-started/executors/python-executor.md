@@ -1,7 +1,7 @@
 # Python Executor
 
 The canonical reference implementation of Lace, conformant to spec version
-**0.9.2<!-- sv -->**. The Lace specification is developed and verified against this
+**0.9.3<!-- sv -->**. The Lace specification is developed and verified against this
 implementation — conformance vectors, error codes, and wire-format schemas
 are tested here before each spec release.
 
@@ -18,6 +18,8 @@ Requires Python **3.10+**.
 ---
 
 ## Installation
+
+Published on PyPI as [`lacelang-executor`](https://pypi.org/project/lacelang-executor/), which pulls in [`lacelang-validator`](https://pypi.org/project/lacelang-validator/):
 
 ```bash
 pip install lacelang-executor

@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.9.3 - Connection-error notifications
+
+- `laceNotifications` now emits a default `structured` notification when a call fails with a connection-level error (DNS failure, connection refused, TLS error, etc.). These failures never reach assertion evaluation, so the existing scope and condition rules could not surface them.
+- The notification fires once on entry into the error state — when the same call had no error on the previous run, or there is no previous run — and stays silent while the error persists. Timeouts are unaffected; their existing rules still own that outcome.
+- Added conformance vectors covering the default error notification and its silent-on-repeat behaviour.
+
 ## 0.9.2 - laceNotifications, laceEmitRecovery
 
 - Fixed laceNotifications `silentOnRepeat` default behavior
@@ -9,7 +15,7 @@
 ## 0.9.1 — Body saving changes
 
 - Removed `bodyPath` from the request record schema; request bodies are no longer saved to disk (they are already present in the AST)
-- Added `result.bodies.save` configuration option (default `false`) to control whether response body files are written
+- Added `result.bodies.dir` configuration option (default `false`) to control whether response body files are written
 - Added `--save-body` CLI flag to enable response body file writing for a single run
 - Body file path convention simplified to `call_{index}_response.{ext}`
 
